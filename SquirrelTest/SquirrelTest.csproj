@@ -137,7 +137,7 @@
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="AssemInfo"/>
     </GetAssemblyIdentity>
-    <Message Text="##teamcity[buildNumber '%(AssemInfo.Version)']" />
+    <Message Text="##teamcity[buildNumber '%(AssemInfo.Version.Major).%(AssemInfo.Version.Minor).%(AssemInfo.Version.Build)']" />
     <Exec Command="nuget pack SquirrelTest.nuspec -Version %(AssemInfo.Version) -Properties Configuration=Release -OutputDirectory C:\SquirrelDeployment\SquirrelTest\ -BasePath $(OutDir)" />
   </Target>
 </Project>
