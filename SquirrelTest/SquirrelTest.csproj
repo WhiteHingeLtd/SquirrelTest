@@ -137,6 +137,6 @@
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
       <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo"/>
     </GetAssemblyIdentity>
-    <Exec Command="nuget pack SquirrelTest.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory $(OutDir) -BasePath $(OutDir)" />
+    <Exec Command="nuget pack SquirrelTest.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory C:\SquirrelDeployment\SquirrelTest\ -BasePath $(OutDir)" />
   </Target>
 </Project>
