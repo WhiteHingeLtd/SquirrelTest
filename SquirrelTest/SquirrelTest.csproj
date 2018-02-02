@@ -135,8 +135,9 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild" Condition=" '$(Configuration)' == 'Release'">
     <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-      <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo"/>
+      <Output TaskParameter="Assemblies" ItemName="AssemInfo"/>
     </GetAssemblyIdentity>
-    <Exec Command="nuget pack SquirrelTest.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory C:\SquirrelDeployment\SquirrelTest\ -BasePath $(OutDir)" />
+    <Message Text="##teamcity[buildNumber '%(AssemInfo.Version)']" />
+    <Exec Command="nuget pack SquirrelTest.nuspec -Version %(AssemInfo.Version) -Properties Configuration=Release -OutputDirectory C:\SquirrelDeployment\SquirrelTest\ -BasePath $(OutDir)" />
   </Target>
 </Project>
